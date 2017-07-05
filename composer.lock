@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/data-structures.git",
-                "reference": "9a3167f37f614ffa2912283efd30e1aa9e3f4af8"
+                "reference": "00e74b52aa9d77569689a02123565ded0d234b5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/data-structures/zipball/9a3167f37f614ffa2912283efd30e1aa9e3f4af8",
-                "reference": "9a3167f37f614ffa2912283efd30e1aa9e3f4af8",
+                "url": "https://api.github.com/repos/daikon-cqrs/data-structures/zipball/00e74b52aa9d77569689a02123565ded0d234b5e",
+                "reference": "00e74b52aa9d77569689a02123565ded0d234b5e",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +46,7 @@
                 "list",
                 "map"
             ],
-            "time": "2017-06-27 16:36:02"
+            "time": "2017-07-04 17:07:18"
         },
         {
             "name": "php-ds/php-ds",
@@ -1236,7 +1236,7 @@
                 "github",
                 "test"
             ],
-            "time": "2017-03-31 10:12:47"
+            "time": "2017-03-31T10:12:47+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
