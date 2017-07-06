@@ -12,4 +12,6 @@ interface RepositoryInterface
     public function findByIds(array $identifiers): ProjectionMap;
 
     public function persist(ProjectionInterface $projection): bool;
+
+    public function makeProjection(): ProjectionInterface;
 }
