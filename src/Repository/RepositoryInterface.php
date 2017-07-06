@@ -2,8 +2,8 @@
 
 namespace Daikon\Dbal\Repository;
 
-use Dailex\Infrastructure\Projection\ProjectionInterface;
-use Dailex\Infrastructure\Projection\ProjectionMap;
+use Daikon\Dbal\Projection\ProjectionInterface;
+use Daikon\Dbal\Projection\ProjectionMap;
 
 interface RepositoryInterface
 {
