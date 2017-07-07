@@ -67,12 +67,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/data-structures.git",
-                "reference": "00e74b52aa9d77569689a02123565ded0d234b5e"
+                "reference": "5a6012a5c49b6425b89b06e83a97ed7bb84cfdb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/data-structures/zipball/00e74b52aa9d77569689a02123565ded0d234b5e",
-                "reference": "00e74b52aa9d77569689a02123565ded0d234b5e",
+                "url": "https://api.github.com/repos/daikon-cqrs/data-structures/zipball/5a6012a5c49b6425b89b06e83a97ed7bb84cfdb4",
+                "reference": "5a6012a5c49b6425b89b06e83a97ed7bb84cfdb4",
                 "shasum": ""
             },
             "require": {
@@ -94,14 +94,15 @@
             "license": [
                 "MPL-2.0"
             ],
-            "description": "Generic data-structure traits based on php/ds.",
+            "description": "Immutable data-structure traits based on php/ds.",
             "homepage": "https://github.com/daikon-cqrs/data-structures",
             "keywords": [
                 "data-structures",
+                "immutable",
                 "list",
                 "map"
             ],
-            "time": "2017-07-04 17:07:18"
+            "time": "2017-07-07 11:52:47"
         },
         {
             "name": "php-ds/php-ds",
