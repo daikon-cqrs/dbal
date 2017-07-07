@@ -2,7 +2,7 @@
 
 namespace Daikon\Dbal\Connector;
 
-use Daikon\DataStructures\TypedMapTrait;
+use Daikon\DataStructure\TypedMapTrait;
 
 final class ConnectorMap implements \IteratorAggregate, \Countable
 {

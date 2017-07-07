@@ -9,7 +9,7 @@
     "require": {
         "php": ">=7.1",
         "beberlei/assert": "^2.7",
-        "daikon/data-structures": "master@dev"
+        "daikon/data-structure": "master@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.2",

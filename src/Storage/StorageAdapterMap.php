@@ -2,7 +2,7 @@
 
 namespace Daikon\Dbal\Storage;
 
-use Daikon\DataStructures\TypedMapTrait;
+use Daikon\DataStructure\TypedMapTrait;
 
 final class StorageAdapterMap implements \IteratorAggregate, \Countable
 {
