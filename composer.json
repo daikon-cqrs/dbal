@@ -1,8 +1,8 @@
 {
     "name": "daikon/dbal",
     "type": "library",
-    "description": "Immutable Database access components for Daikon projects.",
-    "keywords": [ "dbal", "immutable" ],
+    "description": "Database access components for Daikon projects.",
+    "keywords": [ "database", "dbal", "immutable" ],
     "homepage": "https://github.com/daikon-cqrs/dbal",
     "license": "MPL-2.0",
     "prefer-stable": true,
