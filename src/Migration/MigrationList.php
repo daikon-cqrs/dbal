@@ -60,4 +60,13 @@ final class MigrationList implements \IteratorAggregate, \Countable
             return $migration->getVersion() === $version;
         })->count() === 1;
     }
+
+    public function sortByVersion()
+    {
+        $copy = clone $this;
+        $copy->compositeVector->sort(function ($a, $b) {
+            return $a->getVersion() - $b->getVersion();
+        });
+        return $copy;
+    }
 }
