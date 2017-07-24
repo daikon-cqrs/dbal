@@ -6,10 +6,13 @@
     "homepage": "https://github.com/daikon-cqrs/dbal",
     "license": "MPL-2.0",
     "prefer-stable": true,
+    "minimum-stability": "dev",
     "require": {
         "php": ">=7.1",
         "beberlei/assert": "^2.7",
-        "daikon/data-structure": "master@dev"
+        "daikon/data-structure": "master@dev",
+        "daikon/event-sourcing": "master@dev",
+        "daikon/read-model": "master@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.2",
