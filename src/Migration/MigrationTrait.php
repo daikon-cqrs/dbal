@@ -22,12 +22,12 @@ trait MigrationTrait
         $this->connector = $connector;
 
         if ($direction === self::MIGRATE_DOWN) {
-            Assertion::true($this->isReversible());
-            Assertion::true($this->hasExecuted());
+            Assertion::true($this->isReversible(), 'Migration cannot be reversed');
+            Assertion::true($this->hasExecuted(), 'Migration has not previously been executed');
             $this->down();
             $this->executedAt = null;
         } else {
-            Assertion::false($this->hasExecuted());
+            Assertion::false($this->hasExecuted(), 'Migration has already been executed');
             $this->up();
             $this->executedAt = new \DateTimeImmutable('now');
         }
