@@ -231,12 +231,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/read-model.git",
-                "reference": "092462992746b754e086b7257f254ba4631617db"
+                "reference": "f338066b48e33dfcca7c33746df83e91de58f8d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/read-model/zipball/092462992746b754e086b7257f254ba4631617db",
-                "reference": "092462992746b754e086b7257f254ba4631617db",
+                "url": "https://api.github.com/repos/daikon-cqrs/read-model/zipball/f338066b48e33dfcca7c33746df83e91de58f8d1",
+                "reference": "f338066b48e33dfcca7c33746df83e91de58f8d1",
                 "shasum": ""
             },
             "require": {
@@ -271,7 +271,7 @@
                 "read-model",
                 "repository"
             ],
-            "time": "2018-11-29T18:45:48+00:00"
+            "time": "2018-11-29T21:35:05+00:00"
         },
         {
             "name": "paragonie/random_compat",
