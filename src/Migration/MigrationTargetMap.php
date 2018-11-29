@@ -13,12 +13,14 @@ final class MigrationTargetMap implements \IteratorAggregate, \Countable
         $this->init($migrationTargets, MigrationTargetInterface::class);
     }
 
-    public function getEnabledTargets()
+    public function getEnabledTargets(): self
     {
         return new self(
-            $this->compositeMap->filter(function ($migrationName, $migrationTarget) {
-                return $migrationTarget->isEnabled();
-            })
+            $this->compositeMap->filter(
+                function (string $migrationName, MigrationTargetInterface $migrationTarget): bool {
+                    return $migrationTarget->isEnabled();
+                }
+            )
         );
     }
 }

@@ -10,5 +10,5 @@ interface MigrationTargetInterface
 
     public function getMigrationList(): MigrationList;
 
-    public function migrate(string $direction, string $version = null): MigrationList;
+    public function migrate(string $direction, int $version = null): MigrationList;
 }

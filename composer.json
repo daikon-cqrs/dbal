@@ -27,6 +27,12 @@
     "autoload-dev": {
         "psr-4": { "Daikon\\Tests\\Dbal\\": "tests" }
     },
+    "archive": {
+        "exclude": [
+            "/build",
+            "/vendor"
+        ]
+    },
     "scripts": {
         "build": [ "@sniff", "@tests" ],
         "code-sniffer": "phpcs -p -s --extensions=php --standard='PSR1,PSR2' src/",
@@ -35,7 +41,8 @@
         "sniff": [
             "@code-sniffer",
             "@copy-paste-detector",
-            "@validate-json"
+            "@validate-json",
+            "psalm"
         ],
         "test": "phpunit --no-coverage",
         "tests": "phpunit",
