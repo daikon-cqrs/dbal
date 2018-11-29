@@ -10,9 +10,10 @@
     "require": {
         "php": "^7.2",
         "beberlei/assert": "^3.0",
-        "daikon/data-structure": "dev-upgrade-7.2",
-        "daikon/event-sourcing": "dev-upgrade-7.2",
-        "daikon/read-model": "dev-upgrade-7.2"
+        "daikon/data-structure": "dev-upgrade/nativecalls",
+        "daikon/event-sourcing": "dev-upgrade/nativecalls",
+        "daikon/interop": "master@dev",
+        "daikon/read-model": "dev-upgrade/nativecalls"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.4",

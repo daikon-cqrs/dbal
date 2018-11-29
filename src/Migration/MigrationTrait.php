@@ -56,7 +56,7 @@ trait MigrationTrait
         return $this->executedAt instanceof \DateTimeImmutable;
     }
 
-    public function toArray(): array
+    public function toNative(): array
     {
         $arr = [
             '@type' => static::class,

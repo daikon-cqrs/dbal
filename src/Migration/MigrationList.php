@@ -3,8 +3,9 @@
 namespace Daikon\Dbal\Migration;
 
 use Daikon\DataStructure\TypedListTrait;
+use Daikon\Interop\ToNativeInterface;
 
-final class MigrationList implements \IteratorAggregate, \Countable
+final class MigrationList implements \IteratorAggregate, \Countable, ToNativeInterface
 {
     use TypedListTrait;
 
@@ -45,11 +46,11 @@ final class MigrationList implements \IteratorAggregate, \Countable
         );
     }
 
-    public function toArray(): array
+    public function toNative(): array
     {
         $migrations = [];
         foreach ($this as $migration) {
-            $migrations[] = $migration->toArray();
+            $migrations[] = $migration->toNative();
         }
         return $migrations;
     }
