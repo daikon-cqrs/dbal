@@ -12,7 +12,7 @@
         "beberlei/assert": "^3.0",
         "daikon/data-structure": "dev-upgrade/nativecalls",
         "daikon/event-sourcing": "dev-upgrade/nativecalls",
-        "daikon/interop": "master@dev",
+        "daikon/interop": "dev-upgrade-7.2",
         "daikon/read-model": "dev-upgrade/nativecalls"
     },
     "require-dev": {

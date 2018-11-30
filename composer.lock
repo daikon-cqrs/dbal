@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f58e278a4d631a277eb021387f25b89",
+    "content-hash": "7c7add0599cb78daf7dfcb06af7c2fc1",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -67,12 +67,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/data-structure.git",
-                "reference": "3cf9a0b4efacbd692ae9622ffe1da6f41bc15b1b"
+                "reference": "04062d80a5eea0b868210a19f236149f44de3258"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/data-structure/zipball/3cf9a0b4efacbd692ae9622ffe1da6f41bc15b1b",
-                "reference": "3cf9a0b4efacbd692ae9622ffe1da6f41bc15b1b",
+                "url": "https://api.github.com/repos/daikon-cqrs/data-structure/zipball/04062d80a5eea0b868210a19f236149f44de3258",
+                "reference": "04062d80a5eea0b868210a19f236149f44de3258",
                 "shasum": ""
             },
             "require": {
@@ -103,7 +103,7 @@
                 "list",
                 "map"
             ],
-            "time": "2018-11-29T18:03:13+00:00"
+            "time": "2018-11-30T13:21:42+00:00"
         },
         {
             "name": "daikon/event-sourcing",
@@ -111,17 +111,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/event-sourcing.git",
-                "reference": "fe7ad3ed7cd118e9201233c41a9e57a2484e36c2"
+                "reference": "0e1751e72228433e4600357c301bfe09b56d3bef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/event-sourcing/zipball/fe7ad3ed7cd118e9201233c41a9e57a2484e36c2",
-                "reference": "fe7ad3ed7cd118e9201233c41a9e57a2484e36c2",
+                "url": "https://api.github.com/repos/daikon-cqrs/event-sourcing/zipball/0e1751e72228433e4600357c301bfe09b56d3bef",
+                "reference": "0e1751e72228433e4600357c301bfe09b56d3bef",
                 "shasum": ""
             },
             "require": {
-                "beberlei/assert": "^v3.0",
-                "daikon/interop": "master@dev",
+                "beberlei/assert": "^3.0",
+                "daikon/interop": "dev-upgrade-7.2",
                 "daikon/message-bus": "dev-upgrade/nativecalls",
                 "php": "^7.2"
             },
@@ -148,24 +148,28 @@
                 "event-sourcing",
                 "immutable"
             ],
-            "time": "2018-11-29T18:34:13+00:00"
+            "time": "2018-11-30T16:43:06+00:00"
         },
         {
             "name": "daikon/interop",
-            "version": "dev-master",
+            "version": "dev-upgrade-7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/interop.git",
-                "reference": "f4581af6d35d2db22a8bbe35bf655c2457da3123"
+                "reference": "5b9839d61879ab09f699d79f23555f5d53b7c65d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/interop/zipball/f4581af6d35d2db22a8bbe35bf655c2457da3123",
-                "reference": "f4581af6d35d2db22a8bbe35bf655c2457da3123",
+                "url": "https://api.github.com/repos/daikon-cqrs/interop/zipball/5b9839d61879ab09f699d79f23555f5d53b7c65d",
+                "reference": "5b9839d61879ab09f699d79f23555f5d53b7c65d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "sebastian/phpcpd": "^4.1",
+                "squizlabs/php_codesniffer": "^3.3"
             },
             "type": "library",
             "autoload": {
@@ -177,9 +181,9 @@
             "license": [
                 "MPL-2.0"
             ],
-            "description": "Interop interfaces used across daikon components.",
+            "description": "Interop interfaces used across Daikon components.",
             "homepage": "https://github.com/daikon-cqrs/interop",
-            "time": "2017-07-25T18:40:38+00:00"
+            "time": "2018-11-30T12:30:50+00:00"
         },
         {
             "name": "daikon/message-bus",
@@ -187,17 +191,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/message-bus.git",
-                "reference": "5672684e03ca80afc530a7b416b81ca6093c6162"
+                "reference": "cd6fd3bb834e4a5614abd1cad69eae2ff6320f61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/message-bus/zipball/5672684e03ca80afc530a7b416b81ca6093c6162",
-                "reference": "5672684e03ca80afc530a7b416b81ca6093c6162",
+                "url": "https://api.github.com/repos/daikon-cqrs/message-bus/zipball/cd6fd3bb834e4a5614abd1cad69eae2ff6320f61",
+                "reference": "cd6fd3bb834e4a5614abd1cad69eae2ff6320f61",
                 "shasum": ""
             },
             "require": {
                 "daikon/data-structure": "dev-upgrade/nativecalls",
-                "daikon/interop": "master@dev",
+                "daikon/interop": "dev-upgrade-7.2",
                 "php": "^7.2",
                 "ramsey/uuid": "^3.8"
             },
@@ -223,7 +227,7 @@
                 "message-bus",
                 "messaging"
             ],
-            "time": "2018-11-29T18:32:18+00:00"
+            "time": "2018-11-30T13:24:18+00:00"
         },
         {
             "name": "daikon/read-model",
@@ -231,19 +235,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/read-model.git",
-                "reference": "f338066b48e33dfcca7c33746df83e91de58f8d1"
+                "reference": "a734f17fd3d148e5a6e5042a2cacccdff97b0f47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/read-model/zipball/f338066b48e33dfcca7c33746df83e91de58f8d1",
-                "reference": "f338066b48e33dfcca7c33746df83e91de58f8d1",
+                "url": "https://api.github.com/repos/daikon-cqrs/read-model/zipball/a734f17fd3d148e5a6e5042a2cacccdff97b0f47",
+                "reference": "a734f17fd3d148e5a6e5042a2cacccdff97b0f47",
                 "shasum": ""
             },
             "require": {
                 "beberlei/assert": "^3.0",
                 "daikon/data-structure": "dev-upgrade/nativecalls",
                 "daikon/event-sourcing": "dev-upgrade/nativecalls",
-                "daikon/interop": "master@dev",
+                "daikon/interop": "dev-upgrade-7.2",
                 "daikon/message-bus": "dev-upgrade/nativecalls",
                 "php": "^7.2"
             },
@@ -271,7 +275,7 @@
                 "read-model",
                 "repository"
             ],
-            "time": "2018-11-29T21:35:05+00:00"
+            "time": "2018-11-30T17:24:39+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -2507,20 +2511,21 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.1.8",
+            "version": "v4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "c74f4d1988dfcd8760273e53551694da32b056d0"
+                "reference": "4dff24e5d01e713818805c1862d2e3f901ee7dd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/c74f4d1988dfcd8760273e53551694da32b056d0",
-                "reference": "c74f4d1988dfcd8760273e53551694da32b056d0",
+                "url": "https://api.github.com/repos/symfony/console/zipball/4dff24e5d01e713818805c1862d2e3f901ee7dd0",
+                "reference": "4dff24e5d01e713818805c1862d2e3f901ee7dd0",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1.3",
+                "symfony/contracts": "^1.0",
                 "symfony/polyfill-mbstring": "~1.0"
             },
             "conflict": {
@@ -2544,7 +2549,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
@@ -2571,20 +2576,88 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-11-26T14:00:40+00:00"
+            "time": "2018-11-27T07:40:44+00:00"
         },
         {
-            "name": "symfony/finder",
-            "version": "v4.1.8",
+            "name": "symfony/contracts",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/finder.git",
-                "reference": "68fbdcafe915db67adb13fddaec4532e684f6689"
+                "url": "https://github.com/symfony/contracts.git",
+                "reference": "4a33574d5771f4b04334cd4f7d43de96a92efb62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/68fbdcafe915db67adb13fddaec4532e684f6689",
-                "reference": "68fbdcafe915db67adb13fddaec4532e684f6689",
+                "url": "https://api.github.com/repos/symfony/contracts/zipball/4a33574d5771f4b04334cd4f7d43de96a92efb62",
+                "reference": "4a33574d5771f4b04334cd4f7d43de96a92efb62",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3"
+            },
+            "require-dev": {
+                "psr/cache": "^1.0",
+                "psr/container": "^1.0"
+            },
+            "suggest": {
+                "psr/cache": "When using the Cache contracts",
+                "psr/container": "When using the Service contracts",
+                "symfony/cache-contracts-implementation": "",
+                "symfony/service-contracts-implementation": "",
+                "symfony/translation-contracts-implementation": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Contracts\\": ""
+                },
+                "exclude-from-classmap": [
+                    "**/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "A set of abstractions extracted out of the Symfony components",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "abstractions",
+                "contracts",
+                "decoupling",
+                "interfaces",
+                "interoperability",
+                "standards"
+            ],
+            "time": "2018-10-31T08:00:32+00:00"
+        },
+        {
+            "name": "symfony/finder",
+            "version": "v4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/finder.git",
+                "reference": "e53d477d7b5c4982d0e1bfd2298dbee63d01441d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/e53d477d7b5c4982d0e1bfd2298dbee63d01441d",
+                "reference": "e53d477d7b5c4982d0e1bfd2298dbee63d01441d",
                 "shasum": ""
             },
             "require": {
@@ -2593,7 +2666,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
@@ -2620,7 +2693,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2018-11-11T19:51:29+00:00"
+            "time": "2018-11-11T19:52:12+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
