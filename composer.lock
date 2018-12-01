@@ -191,12 +191,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/message-bus.git",
-                "reference": "cd6fd3bb834e4a5614abd1cad69eae2ff6320f61"
+                "reference": "c500b5c919d7b84c73aa0cb2270e7463640a0968"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/message-bus/zipball/cd6fd3bb834e4a5614abd1cad69eae2ff6320f61",
-                "reference": "cd6fd3bb834e4a5614abd1cad69eae2ff6320f61",
+                "url": "https://api.github.com/repos/daikon-cqrs/message-bus/zipball/c500b5c919d7b84c73aa0cb2270e7463640a0968",
+                "reference": "c500b5c919d7b84c73aa0cb2270e7463640a0968",
                 "shasum": ""
             },
             "require": {
@@ -227,7 +227,7 @@
                 "message-bus",
                 "messaging"
             ],
-            "time": "2018-11-30T13:24:18+00:00"
+            "time": "2018-11-30T20:51:42+00:00"
         },
         {
             "name": "daikon/read-model",
@@ -235,12 +235,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/read-model.git",
-                "reference": "a734f17fd3d148e5a6e5042a2cacccdff97b0f47"
+                "reference": "07446ff6300dcbc717d5a9361514665ec10ff349"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/read-model/zipball/a734f17fd3d148e5a6e5042a2cacccdff97b0f47",
-                "reference": "a734f17fd3d148e5a6e5042a2cacccdff97b0f47",
+                "url": "https://api.github.com/repos/daikon-cqrs/read-model/zipball/07446ff6300dcbc717d5a9361514665ec10ff349",
+                "reference": "07446ff6300dcbc717d5a9361514665ec10ff349",
                 "shasum": ""
             },
             "require": {
@@ -275,7 +275,7 @@
                 "read-model",
                 "repository"
             ],
-            "time": "2018-11-30T17:24:39+00:00"
+            "time": "2018-12-01T00:07:01+00:00"
         },
         {
             "name": "paragonie/random_compat",
