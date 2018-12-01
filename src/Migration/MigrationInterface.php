@@ -1,10 +1,19 @@
 <?php
+/**
+ * This file is part of the daikon-cqrs/dbal project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
 
 namespace Daikon\Dbal\Migration;
 
 use Daikon\Dbal\Connector\ConnectorInterface;
+use Daikon\Interop\ToNativeInterface;
 
-interface MigrationInterface
+interface MigrationInterface extends ToNativeInterface
 {
     const MIGRATE_UP = 'up';
 
@@ -19,8 +28,6 @@ interface MigrationInterface
     public function isReversible(): bool;
 
     public function hasExecuted(): bool;
-
-    public function toArray(): array;
 
     public function execute(ConnectorInterface $connector, string $direction = self::MIGRATE_UP): void;
 }

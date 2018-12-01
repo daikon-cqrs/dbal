@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the daikon-cqrs/dbal project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
 
 namespace Daikon\Dbal\Migration;
 
@@ -7,14 +15,19 @@ use Daikon\Dbal\Exception\MigrationException;
 
 final class MigrationTarget implements MigrationTargetInterface
 {
+    /** @var string */
     private $name;
 
+    /** @var bool */
     private $enabled;
 
+    /** @var MigrationAdapterInterface */
     private $migrationAdapter;
 
+    /** @var MigrationLoaderInterface */
     private $migrationLoader;
 
+    /** @var MigrationList|null */
     private $migrationList;
 
     public function __construct(
@@ -41,7 +54,7 @@ final class MigrationTarget implements MigrationTargetInterface
 
     public function getMigrationList(): MigrationList
     {
-        if (!$this->migrationList) {
+        if (!isset($this->migrationList)) {
             $availableMigrations = $this->migrationLoader->load();
             $executedMigrations = $this->migrationAdapter->read($this->name);
             $pendingMigrations = $availableMigrations->diff($executedMigrations);
@@ -50,7 +63,7 @@ final class MigrationTarget implements MigrationTargetInterface
         return $this->migrationList;
     }
 
-    public function migrate(string $direction, string $version = null): MigrationList
+    public function migrate(string $direction, int $version = null): MigrationList
     {
         Assertion::true($this->isEnabled());
 

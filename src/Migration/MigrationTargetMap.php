@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the daikon-cqrs/dbal project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
 
 namespace Daikon\Dbal\Migration;
 
@@ -13,12 +21,14 @@ final class MigrationTargetMap implements \IteratorAggregate, \Countable
         $this->init($migrationTargets, MigrationTargetInterface::class);
     }
 
-    public function getEnabledTargets()
+    public function getEnabledTargets(): self
     {
         return new self(
-            $this->compositeMap->filter(function ($migrationName, $migrationTarget) {
-                return $migrationTarget->isEnabled();
-            })
+            $this->compositeMap->filter(
+                function (string $migrationName, MigrationTargetInterface $migrationTarget): bool {
+                    return $migrationTarget->isEnabled();
+                }
+            )
         );
     }
 }
