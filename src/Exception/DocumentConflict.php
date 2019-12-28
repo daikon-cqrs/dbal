@@ -8,8 +8,6 @@
 
 namespace Daikon\Dbal\Exception;
 
-use Exception;
-
-class DbalException extends Exception
+final class DocumentConflict extends DbalException
 {
 }

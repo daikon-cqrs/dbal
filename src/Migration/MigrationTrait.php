@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * This file is part of the daikon-cqrs/dbal project.
  *
@@ -6,13 +6,13 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
-
 namespace Daikon\Dbal\Migration;
 
 use Assert\Assertion;
 use Daikon\Dbal\Connector\ConnectorInterface;
 use Daikon\Dbal\Exception\MigrationException;
+use DateTimeImmutable;
+use ReflectionClass;
 
 trait MigrationTrait
 {
@@ -25,11 +25,11 @@ trait MigrationTrait
         $this->executedAt = $executedAt;
     }
 
-    public function execute(ConnectorInterface $connector, string $direction = self::MIGRATE_UP): void
+    public function execute(ConnectorInterface $connector, string $direction = MigrationInterface::MIGRATE_UP): void
     {
         $this->connector = $connector;
 
-        if ($direction === self::MIGRATE_DOWN) {
+        if ($direction === MigrationInterface::MIGRATE_DOWN) {
             Assertion::true($this->isReversible(), 'Migration cannot be reversed');
             Assertion::true($this->hasExecuted(), 'Migration has not previously been executed');
             $this->down();
@@ -43,7 +43,7 @@ trait MigrationTrait
 
     public function getName(): string
     {
-        $shortName = (new \ReflectionClass(static::class))->getShortName();
+        $shortName = (new ReflectionClass(static::class))->getShortName();
         if (!preg_match('#^(?<name>.+?)\d+$#', $shortName, $matches)) {
             throw new MigrationException('Unexpected migration name in '.$shortName);
         }
@@ -52,7 +52,7 @@ trait MigrationTrait
 
     public function getVersion(): int
     {
-        $shortName= (new \ReflectionClass(static::class))->getShortName();
+        $shortName= (new ReflectionClass(static::class))->getShortName();
         if (!preg_match('#(?<version>\d{14})$#', $shortName, $matches)) {
             throw new MigrationException('Unexpected migration version in '.$shortName);
         }
@@ -61,7 +61,7 @@ trait MigrationTrait
 
     public function hasExecuted(): bool
     {
-        return $this->executedAt instanceof \DateTimeImmutable;
+        return $this->executedAt instanceof DateTimeImmutable;
     }
 
     public function toNative(): array

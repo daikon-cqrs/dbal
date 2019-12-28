@@ -1,12 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * This file is part of the daikon-cqrs/dbal project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
-declare(strict_types=1);
 
 namespace Daikon\Dbal\Migration;
 
@@ -15,9 +13,9 @@ use Daikon\Interop\ToNativeInterface;
 
 interface MigrationInterface extends ToNativeInterface
 {
-    const MIGRATE_UP = 'up';
+    public const MIGRATE_UP = 'up';
 
-    const MIGRATE_DOWN = 'down';
+    public const MIGRATE_DOWN = 'down';
 
     public function getName(): string;
 

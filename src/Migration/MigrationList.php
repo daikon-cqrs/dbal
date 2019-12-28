@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * This file is part of the daikon-cqrs/dbal project.
  *
@@ -6,14 +6,14 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
-
 namespace Daikon\Dbal\Migration;
 
+use Countable;
 use Daikon\DataStructure\TypedListTrait;
 use Daikon\Interop\ToNativeInterface;
+use IteratorAggregate;
 
-final class MigrationList implements \IteratorAggregate, \Countable, ToNativeInterface
+final class MigrationList implements IteratorAggregate, Countable, ToNativeInterface
 {
     use TypedListTrait;
 

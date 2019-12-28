@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * This file is part of the daikon-cqrs/dbal project.
  *
@@ -6,19 +6,19 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
-
 namespace Daikon\Dbal\Storage;
 
+use Countable;
 use Daikon\DataStructure\TypedMapTrait;
 use Daikon\ReadModel\Storage\StorageAdapterInterface as ReadModelStorageAdapterInterface;
 use Daikon\EventSourcing\EventStore\Storage\StorageAdapterInterface as EventStoreStorageAdapterInterface;
+use IteratorAggregate;
 
-final class StorageAdapterMap implements \IteratorAggregate, \Countable
+final class StorageAdapterMap implements IteratorAggregate, Countable
 {
     use TypedMapTrait;
 
-    public function __construct(array $storageAdapters = [])
+    public function __construct(iterable $storageAdapters = [])
     {
         $this->init(
             $storageAdapters,
