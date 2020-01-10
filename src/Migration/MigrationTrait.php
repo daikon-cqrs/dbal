@@ -10,17 +10,17 @@ namespace Daikon\Dbal\Migration;
 
 use Assert\Assertion;
 use Daikon\Dbal\Connector\ConnectorInterface;
-use Daikon\Dbal\Exception\MigrationException;
 use DateTimeImmutable;
 use ReflectionClass;
+use RuntimeException;
 
 trait MigrationTrait
 {
-    private $executedAt;
+    private ?DateTimeImmutable $executedAt;
 
-    private $connector;
+    private ConnectorInterface $connector;
 
-    public function __construct(\DateTimeImmutable $executedAt = null)
+    public function __construct(DateTimeImmutable $executedAt = null)
     {
         $this->executedAt = $executedAt;
     }
@@ -37,7 +37,7 @@ trait MigrationTrait
         } else {
             Assertion::false($this->hasExecuted(), 'Migration has already been executed');
             $this->up();
-            $this->executedAt = new \DateTimeImmutable('now');
+            $this->executedAt = new DateTimeImmutable;
         }
     }
 
@@ -45,7 +45,7 @@ trait MigrationTrait
     {
         $shortName = (new ReflectionClass(static::class))->getShortName();
         if (!preg_match('#^(?<name>.+?)\d+$#', $shortName, $matches)) {
-            throw new MigrationException('Unexpected migration name in '.$shortName);
+            throw new RuntimeException('Unexpected migration name in '.$shortName);
         }
         return $matches['name'];
     }
@@ -54,7 +54,7 @@ trait MigrationTrait
     {
         $shortName= (new ReflectionClass(static::class))->getShortName();
         if (!preg_match('#(?<version>\d{14})$#', $shortName, $matches)) {
-            throw new MigrationException('Unexpected migration version in '.$shortName);
+            throw new RuntimeException('Unexpected migration version in '.$shortName);
         }
         return intval($matches['version']);
     }
@@ -66,7 +66,7 @@ trait MigrationTrait
 
     public function toNative(): array
     {
-        $arr = [
+        $state = [
             '@type' => static::class,
             'name' => $this->getName(),
             'version' => $this->getVersion(),
@@ -74,9 +74,9 @@ trait MigrationTrait
         ];
 
         if ($this->hasExecuted()) {
-            $arr['executedAt']  = $this->executedAt->format('c');
+            $state['executedAt']  = $this->executedAt->format('c');
         }
 
-        return $arr;
+        return $state;
     }
 }

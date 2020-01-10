@@ -8,84 +8,79 @@
 
 namespace Daikon\Dbal\Migration;
 
-use Countable;
+use Daikon\DataStructure\TypedListInterface;
 use Daikon\DataStructure\TypedListTrait;
 use Daikon\Interop\ToNativeInterface;
-use IteratorAggregate;
 
-final class MigrationList implements IteratorAggregate, Countable, ToNativeInterface
+final class MigrationList implements TypedListInterface, ToNativeInterface
 {
     use TypedListTrait;
 
     public function __construct(iterable $migrations = [])
     {
-        $this->init($migrations, MigrationInterface::class);
+        $this->init($migrations, [MigrationInterface::class]);
     }
 
-    public function diff(self $migrationList): self
+    public function exclude(self $migrationList): self
     {
-        return new self(
-            $this->compositeVector->filter(
-                function (MigrationInterface $migration) use ($migrationList): bool {
-                    return !$migrationList->containsVersion($migration->getVersion());
-                }
-            )
+        return $this->filter(
+            fn(MigrationInterface $migration): bool => !$migrationList->contains($migration)
         );
-    }
-
-    public function merge(self $migrationList): self
-    {
-        return new self($this->compositeVector->merge($migrationList));
     }
 
     public function getPendingMigrations(): self
     {
-        return new self(
-            $this->compositeVector->filter(
-                function (MigrationInterface $migration): bool {
-                    return !$migration->hasExecuted();
-                }
-            )
+        return $this->filter(
+            fn(MigrationInterface $migration): bool => !$migration->hasExecuted()
         );
     }
 
     public function getExecutedMigrations(): self
     {
-        return new self(
-            $this->compositeVector->filter(
-                function (MigrationInterface $migration): bool {
-                    return $migration->hasExecuted();
-                }
-            )
+        return $this->filter(
+            fn(MigrationInterface $migration): bool => $migration->hasExecuted()
         );
     }
 
-    public function toNative(): array
+    public function contains(MigrationInterface $migration): bool
+    {
+        return $this->reduce(
+            function (bool $carry, MigrationInterface $item) use ($migration): bool {
+                return $carry
+                    || $item->getName() === $migration->getName()
+                    && $item->getVersion() === $migration->getVersion();
+            },
+            false
+        );
+    }
+
+    public function sortByVersion(): self
+    {
+        return $this->sort(
+            fn(MigrationInterface $a, MigrationInterface $b): int => $a->getVersion() - $b->getVersion()
+        );
+    }
+
+    public function findBeforeVersion(int $version = null): self
+    {
+        return $this->filter(
+            fn(MigrationInterface $migration): bool => !$version || $migration->getVersion() <= $version
+        );
+    }
+
+    public function findAfterVersion(int $version = null): self
+    {
+        return $this->filter(
+            fn(MigrationInterface $migration): bool => !$version || $migration->getVersion() > $version
+        );
+    }
+
+    public function toNative()
     {
         $migrations = [];
         foreach ($this as $migration) {
             $migrations[] = $migration->toNative();
         }
         return $migrations;
-    }
-
-    public function containsVersion(int $version): bool
-    {
-        return $this->compositeVector->filter(
-            function (MigrationInterface $migration) use ($version): bool {
-                return $migration->getVersion() === $version;
-            }
-        )->count() === 1;
-    }
-
-    public function sortByVersion(): self
-    {
-        $copy = clone $this;
-        $copy->compositeVector->sort(
-            function (MigrationInterface $a, MigrationInterface $b): int {
-                return $a->getVersion() - $b->getVersion();
-            }
-        );
-        return $copy;
     }
 }

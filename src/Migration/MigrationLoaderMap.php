@@ -8,16 +8,15 @@
 
 namespace Daikon\Dbal\Migration;
 
-use Countable;
+use Daikon\DataStructure\TypedMapInterface;
 use Daikon\DataStructure\TypedMapTrait;
-use IteratorAggregate;
 
-final class MigrationLoaderMap implements IteratorAggregate, Countable
+final class MigrationLoaderMap implements TypedMapInterface
 {
     use TypedMapTrait;
 
     public function __construct(iterable $migrationLoaders = [])
     {
-        $this->init($migrationLoaders, MigrationLoaderInterface::class);
+        $this->init($migrationLoaders, [MigrationLoaderInterface::class]);
     }
 }

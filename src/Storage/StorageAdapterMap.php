@@ -8,13 +8,12 @@
 
 namespace Daikon\Dbal\Storage;
 
-use Countable;
+use Daikon\DataStructure\TypedMapInterface;
 use Daikon\DataStructure\TypedMapTrait;
 use Daikon\ReadModel\Storage\StorageAdapterInterface as ReadModelStorageAdapterInterface;
 use Daikon\EventSourcing\EventStore\Storage\StorageAdapterInterface as EventStoreStorageAdapterInterface;
-use IteratorAggregate;
 
-final class StorageAdapterMap implements IteratorAggregate, Countable
+final class StorageAdapterMap implements TypedMapInterface
 {
     use TypedMapTrait;
 

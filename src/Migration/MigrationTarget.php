@@ -9,24 +9,16 @@
 namespace Daikon\Dbal\Migration;
 
 use Assert\Assertion;
-use Daikon\Dbal\Exception\MigrationException;
 
 final class MigrationTarget implements MigrationTargetInterface
 {
-    /** @var string */
-    private $name;
+    private string $name;
 
-    /** @var bool */
-    private $enabled;
+    private bool $enabled;
 
-    /** @var MigrationAdapterInterface */
-    private $migrationAdapter;
+    private MigrationAdapterInterface $migrationAdapter;
 
-    /** @var MigrationLoaderInterface */
-    private $migrationLoader;
-
-    /** @var MigrationList|null */
-    private $migrationList;
+    private MigrationLoaderInterface $migrationLoader;
 
     public function __construct(
         string $name,
@@ -52,13 +44,10 @@ final class MigrationTarget implements MigrationTargetInterface
 
     public function getMigrationList(): MigrationList
     {
-        if (!isset($this->migrationList)) {
-            $availableMigrations = $this->migrationLoader->load();
-            $executedMigrations = $this->migrationAdapter->read($this->name);
-            $pendingMigrations = $availableMigrations->diff($executedMigrations);
-            $this->migrationList = $executedMigrations->merge($pendingMigrations);
-        }
-        return $this->migrationList;
+        $availableMigrations = $this->migrationLoader->load();
+        $executedMigrations = $this->migrationAdapter->read($this->name);
+        $pendingMigrations = $availableMigrations->exclude($executedMigrations);
+        return $executedMigrations->append($pendingMigrations);
     }
 
     public function migrate(string $direction, int $version = null): MigrationList
@@ -77,55 +66,32 @@ final class MigrationTarget implements MigrationTargetInterface
     private function migrateUp(int $version = null): MigrationList
     {
         $migrationList = $this->getMigrationList();
-        $pendingMigrations = $migrationList->getPendingMigrations();
         $executedMigrations = $migrationList->getExecutedMigrations();
+        $pendingMigrations = $migrationList->getPendingMigrations()->findBeforeVersion($version);
 
-        if ($version && !$pendingMigrations->containsVersion($version)) {
-            throw new MigrationException(sprintf('Target version %s not found in pending migrations.', $version));
-        }
-
-        $completedMigrations = [];
         $connector = $this->migrationAdapter->getConnector();
         foreach ($pendingMigrations as $migration) {
             $migration->execute($connector, MigrationInterface::MIGRATE_UP);
             $executedMigrations = $executedMigrations->push($migration);
             $this->migrationAdapter->write($this->name, $executedMigrations);
-            $completedMigrations[] = $migration;
-            if ($version && $migration->getVersion() === $version) {
-                break;
-            }
         }
 
-        return new MigrationList($completedMigrations);
+        return $pendingMigrations;
     }
 
     private function migrateDown(int $version = null): MigrationList
     {
         $migrationList = $this->getMigrationList();
         $executedMigrations = $migrationList->getExecutedMigrations();
+        $reversedMigrations = new MigrationList;
 
-        if ($version && !$executedMigrations->containsVersion($version)) {
-            throw new MigrationException(sprintf('Target version %s not found in executed migrations.', $version));
-        }
-
-        $completedMigrations = [];
         $connector = $this->migrationAdapter->getConnector();
-        foreach ($executedMigrations->reverse() as $migration) {
-            if ($version && $migration->getVersion() === $version) {
-                break;
-            }
+        foreach ($executedMigrations->findAfterVersion($version)->reverse() as $migration) {
             $migration->execute($connector, MigrationInterface::MIGRATE_DOWN);
-            $executedMigrations = $executedMigrations->remove($migration);
-            if ($executedMigrations->count() > 0) {
-                /*
-                 * Do not write version info after reversing initial migration since we have
-                 * an assumption that the database was deleted!
-                 */
-                $this->migrationAdapter->write($this->name, $executedMigrations);
-            }
-            $completedMigrations[] = $migration;
+            $reversedMigrations = $reversedMigrations->push($migration);
+            $this->migrationAdapter->write($this->name, $executedMigrations->exclude($reversedMigrations));
         }
 
-        return new MigrationList($completedMigrations);
+        return $reversedMigrations;
     }
 }

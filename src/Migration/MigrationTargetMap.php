@@ -8,27 +8,22 @@
 
 namespace Daikon\Dbal\Migration;
 
-use Countable;
+use Daikon\DataStructure\TypedMapInterface;
 use Daikon\DataStructure\TypedMapTrait;
-use IteratorAggregate;
 
-final class MigrationTargetMap implements IteratorAggregate, Countable
+final class MigrationTargetMap implements TypedMapInterface
 {
     use TypedMapTrait;
 
     public function __construct(iterable $migrationTargets = [])
     {
-        $this->init($migrationTargets, MigrationTargetInterface::class);
+        $this->init($migrationTargets, [MigrationTargetInterface::class]);
     }
 
     public function getEnabledTargets(): self
     {
-        return new self(
-            $this->compositeMap->filter(
-                function (string $migrationName, MigrationTargetInterface $migrationTarget): bool {
-                    return $migrationTarget->isEnabled();
-                }
-            )
+        return $this->filter(
+            fn(string $name, MigrationTargetInterface $target): bool => $target->isEnabled()
         );
     }
 }

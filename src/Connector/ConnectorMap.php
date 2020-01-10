@@ -8,16 +8,15 @@
 
 namespace Daikon\Dbal\Connector;
 
-use Countable;
+use Daikon\DataStructure\TypedMapInterface;
 use Daikon\DataStructure\TypedMapTrait;
-use IteratorAggregate;
 
-final class ConnectorMap implements IteratorAggregate, Countable
+final class ConnectorMap implements TypedMapInterface
 {
     use TypedMapTrait;
 
     public function __construct(iterable $connectors = [])
     {
-        $this->init($connectors, ConnectorInterface::class);
+        $this->init($connectors, [ConnectorInterface::class]);
     }
 }

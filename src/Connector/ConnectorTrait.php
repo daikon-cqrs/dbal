@@ -10,13 +10,12 @@ namespace Daikon\Dbal\Connector;
 
 trait ConnectorTrait
 {
-    /** @var array */
-    private $settings;
+    private array $settings;
 
     /** @var mixed */
     private $connection;
 
-    public function __construct(array $settings)
+    public function __construct(array $settings = [])
     {
         $this->settings = $settings;
     }
