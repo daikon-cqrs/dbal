@@ -10,9 +10,9 @@ namespace Daikon\Dbal\Migration;
 
 use Assert\Assertion;
 use Daikon\Dbal\Connector\ConnectorInterface;
+use Daikon\Interop\RuntimeException;
 use DateTimeImmutable;
 use ReflectionClass;
-use RuntimeException;
 
 trait MigrationTrait
 {

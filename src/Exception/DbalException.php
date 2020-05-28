@@ -8,8 +8,8 @@
 
 namespace Daikon\Dbal\Exception;
 
-use Exception;
+use Daikon\Interop\RuntimeException;
 
-class DbalException extends Exception
+class DbalException extends RuntimeException
 {
 }
