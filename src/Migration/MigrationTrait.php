@@ -8,8 +8,8 @@
 
 namespace Daikon\Dbal\Migration;
 
-use Assert\Assertion;
 use Daikon\Dbal\Connector\ConnectorInterface;
+use Daikon\Interop\Assertion;
 use Daikon\Interop\RuntimeException;
 use DateTimeImmutable;
 use ReflectionClass;

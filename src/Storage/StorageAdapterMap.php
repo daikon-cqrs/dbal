@@ -8,15 +8,12 @@
 
 namespace Daikon\Dbal\Storage;
 
-use Daikon\DataStructure\TypedMapInterface;
-use Daikon\DataStructure\TypedMapTrait;
+use Daikon\DataStructure\TypedMap;
 use Daikon\ReadModel\Storage\StorageAdapterInterface as ReadModelStorageAdapterInterface;
 use Daikon\EventSourcing\EventStore\Storage\StorageAdapterInterface as EventStoreStorageAdapterInterface;
 
-final class StorageAdapterMap implements TypedMapInterface
+final class StorageAdapterMap extends TypedMap
 {
-    use TypedMapTrait;
-
     public function __construct(iterable $storageAdapters = [])
     {
         $this->init(

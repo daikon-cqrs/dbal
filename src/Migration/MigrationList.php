@@ -8,14 +8,11 @@
 
 namespace Daikon\Dbal\Migration;
 
-use Daikon\DataStructure\TypedListInterface;
-use Daikon\DataStructure\TypedListTrait;
+use Daikon\DataStructure\TypedList;
 use Daikon\Interop\ToNativeInterface;
 
-final class MigrationList implements TypedListInterface, ToNativeInterface
+final class MigrationList extends TypedList implements ToNativeInterface
 {
-    use TypedListTrait;
-
     public function __construct(iterable $migrations = [])
     {
         $this->init($migrations, [MigrationInterface::class]);

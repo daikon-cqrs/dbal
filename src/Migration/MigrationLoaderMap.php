@@ -8,13 +8,10 @@
 
 namespace Daikon\Dbal\Migration;
 
-use Daikon\DataStructure\TypedMapInterface;
-use Daikon\DataStructure\TypedMapTrait;
+use Daikon\DataStructure\TypedMap;
 
-final class MigrationLoaderMap implements TypedMapInterface
+final class MigrationLoaderMap extends TypedMap
 {
-    use TypedMapTrait;
-
     public function __construct(iterable $migrationLoaders = [])
     {
         $this->init($migrationLoaders, [MigrationLoaderInterface::class]);
