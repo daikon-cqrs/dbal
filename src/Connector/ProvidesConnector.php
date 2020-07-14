@@ -8,7 +8,7 @@
 
 namespace Daikon\Dbal\Connector;
 
-trait ConnectorTrait
+trait ProvidesConnector
 {
     private array $settings;
 

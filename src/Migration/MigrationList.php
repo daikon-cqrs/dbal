@@ -72,12 +72,10 @@ final class MigrationList extends TypedList implements ToNativeInterface
         );
     }
 
-    public function toNative()
+    public function toNative(): array
     {
-        $migrations = [];
-        foreach ($this as $migration) {
-            $migrations[] = $migration->toNative();
-        }
-        return $migrations;
+        return $this->map(
+            fn(MigrationInterface $migration): array => $migration->toNative()
+        )->unwrap();
     }
 }
