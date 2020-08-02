@@ -14,8 +14,9 @@ use Daikon\Interop\ToNativeInterface;
 interface MigrationInterface extends ToNativeInterface
 {
     public const MIGRATE_UP = 'up';
-
     public const MIGRATE_DOWN = 'down';
+
+    public function __invoke(ConnectorInterface $connector, string $direction = self::MIGRATE_UP): void;
 
     public function getName(): string;
 
@@ -26,6 +27,4 @@ interface MigrationInterface extends ToNativeInterface
     public function isReversible(): bool;
 
     public function hasExecuted(): bool;
-
-    public function execute(ConnectorInterface $connector, string $direction = self::MIGRATE_UP): void;
 }

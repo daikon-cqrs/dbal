@@ -71,7 +71,7 @@ final class MigrationTarget implements MigrationTargetInterface
 
         $connector = $this->migrationAdapter->getConnector();
         foreach ($pendingMigrations as $migration) {
-            $migration->execute($connector, MigrationInterface::MIGRATE_UP);
+            $migration($connector, MigrationInterface::MIGRATE_UP);
             $executedMigrations = $executedMigrations->push($migration);
             $this->migrationAdapter->write($this->name, $executedMigrations);
         }
@@ -87,7 +87,7 @@ final class MigrationTarget implements MigrationTargetInterface
 
         $connector = $this->migrationAdapter->getConnector();
         foreach ($executedMigrations->findAfterVersion($version)->reverse() as $migration) {
-            $migration->execute($connector, MigrationInterface::MIGRATE_DOWN);
+            $migration($connector, MigrationInterface::MIGRATE_DOWN);
             $reversedMigrations = $reversedMigrations->push($migration);
             $this->migrationAdapter->write($this->name, $executedMigrations->exclude($reversedMigrations));
         }

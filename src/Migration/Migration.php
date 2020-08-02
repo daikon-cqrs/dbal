@@ -14,28 +14,32 @@ use Daikon\Interop\RuntimeException;
 use DateTimeImmutable;
 use ReflectionClass;
 
-trait MigrationTrait
+abstract class Migration implements MigrationInterface
 {
     private ?DateTimeImmutable $executedAt;
 
-    private ConnectorInterface $connector;
+    protected ConnectorInterface $connector;
+
+    abstract protected function up(): void;
+
+    abstract protected function down(): void;
 
     public function __construct(DateTimeImmutable $executedAt = null)
     {
         $this->executedAt = $executedAt;
     }
 
-    public function execute(ConnectorInterface $connector, string $direction = MigrationInterface::MIGRATE_UP): void
+    public function __invoke(ConnectorInterface $connector, string $direction = MigrationInterface::MIGRATE_UP): void
     {
         $this->connector = $connector;
 
         if ($direction === MigrationInterface::MIGRATE_DOWN) {
-            Assertion::true($this->isReversible(), 'Migration cannot be reversed');
-            Assertion::true($this->hasExecuted(), 'Migration has not previously been executed');
+            Assertion::true($this->isReversible(), 'Migration cannot be reversed.');
+            Assertion::true($this->hasExecuted(), 'Migration has not previously been executed.');
             $this->down();
             $this->executedAt = null;
         } else {
-            Assertion::false($this->hasExecuted(), 'Migration has already been executed');
+            Assertion::false($this->hasExecuted(), 'Migration has already been executed.');
             $this->up();
             $this->executedAt = new DateTimeImmutable;
         }
