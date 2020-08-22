@@ -12,7 +12,7 @@ use Assert\Assertion;
 
 final class MigrationTarget implements MigrationTargetInterface
 {
-    private string $name;
+    private string $key;
 
     private bool $enabled;
 
@@ -21,20 +21,20 @@ final class MigrationTarget implements MigrationTargetInterface
     private MigrationLoaderInterface $migrationLoader;
 
     public function __construct(
-        string $name,
+        string $key,
         bool $enabled,
         MigrationAdapterInterface $migrationAdapter,
         MigrationLoaderInterface $migrationLoader
     ) {
-        $this->name = $name;
+        $this->key = $key;
         $this->enabled = $enabled;
         $this->migrationAdapter = $migrationAdapter;
         $this->migrationLoader = $migrationLoader;
     }
 
-    public function getName(): string
+    public function getKey(): string
     {
-        return $this->name;
+        return $this->key;
     }
 
     public function isEnabled(): bool
@@ -45,7 +45,7 @@ final class MigrationTarget implements MigrationTargetInterface
     public function getMigrationList(): MigrationList
     {
         $availableMigrations = $this->migrationLoader->load();
-        $executedMigrations = $this->migrationAdapter->read($this->name);
+        $executedMigrations = $this->migrationAdapter->read($this->key);
         $pendingMigrations = $availableMigrations->exclude($executedMigrations);
         return $executedMigrations->append($pendingMigrations);
     }
@@ -73,7 +73,7 @@ final class MigrationTarget implements MigrationTargetInterface
         foreach ($pendingMigrations as $migration) {
             $migration($connector, MigrationInterface::MIGRATE_UP);
             $executedMigrations = $executedMigrations->push($migration);
-            $this->migrationAdapter->write($this->name, $executedMigrations);
+            $this->migrationAdapter->write($this->key, $executedMigrations);
         }
 
         return $pendingMigrations;
@@ -89,7 +89,7 @@ final class MigrationTarget implements MigrationTargetInterface
         foreach ($executedMigrations->findAfterVersion($version)->reverse() as $migration) {
             $migration($connector, MigrationInterface::MIGRATE_DOWN);
             $reversedMigrations = $reversedMigrations->push($migration);
-            $this->migrationAdapter->write($this->name, $executedMigrations->exclude($reversedMigrations));
+            $this->migrationAdapter->write($this->key, $executedMigrations->exclude($reversedMigrations));
         }
 
         return $reversedMigrations;

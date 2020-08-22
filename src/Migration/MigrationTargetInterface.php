@@ -10,7 +10,7 @@ namespace Daikon\Dbal\Migration;
 
 interface MigrationTargetInterface
 {
-    public function getName(): string;
+    public function getKey(): string;
 
     public function isEnabled(): bool;
 
