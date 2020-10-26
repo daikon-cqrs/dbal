@@ -175,12 +175,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/event-sourcing.git",
-                "reference": "c77955f3c353d2b459a58bc84a58891f90ebbe34"
+                "reference": "78b9d103d6e55b2ff9ea2117e623c1db6b4adc46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/event-sourcing/zipball/c77955f3c353d2b459a58bc84a58891f90ebbe34",
-                "reference": "c77955f3c353d2b459a58bc84a58891f90ebbe34",
+                "url": "https://api.github.com/repos/daikon-cqrs/event-sourcing/zipball/78b9d103d6e55b2ff9ea2117e623c1db6b4adc46",
+                "reference": "78b9d103d6e55b2ff9ea2117e623c1db6b4adc46",
                 "shasum": ""
             },
             "require": {
@@ -213,7 +213,7 @@
                 "event-sourcing",
                 "immutable"
             ],
-            "time": "2020-08-29T19:00:08+00:00"
+            "time": "2020-09-02T17:46:30+00:00"
         },
         {
             "name": "daikon/interop",
@@ -347,12 +347,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/read-model.git",
-                "reference": "07d639cb9e966ce84a28a59222f6435ddb58b221"
+                "reference": "9792fbae02492b2f7b61f208e204628f1a333920"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/read-model/zipball/07d639cb9e966ce84a28a59222f6435ddb58b221",
-                "reference": "07d639cb9e966ce84a28a59222f6435ddb58b221",
+                "url": "https://api.github.com/repos/daikon-cqrs/read-model/zipball/9792fbae02492b2f7b61f208e204628f1a333920",
+                "reference": "9792fbae02492b2f7b61f208e204628f1a333920",
                 "shasum": ""
             },
             "require": {
@@ -387,7 +387,7 @@
                 "read-model",
                 "repository"
             ],
-            "time": "2020-08-29T19:10:57+00:00"
+            "time": "2020-09-02T17:30:50+00:00"
         },
         {
             "name": "daikon/value-object",
@@ -395,12 +395,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/daikon-cqrs/value-object.git",
-                "reference": "39689919952a532ecfe086b383713fcfd6f27dc2"
+                "reference": "291a9bdec1e9142d07ed7300c0320e04eaab1d4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daikon-cqrs/value-object/zipball/39689919952a532ecfe086b383713fcfd6f27dc2",
-                "reference": "39689919952a532ecfe086b383713fcfd6f27dc2",
+                "url": "https://api.github.com/repos/daikon-cqrs/value-object/zipball/291a9bdec1e9142d07ed7300c0320e04eaab1d4b",
+                "reference": "291a9bdec1e9142d07ed7300c0320e04eaab1d4b",
                 "shasum": ""
             },
             "require": {
@@ -430,7 +430,7 @@
             "keywords": [
                 "value-object"
             ],
-            "time": "2020-08-29T18:31:52+00:00"
+            "time": "2020-09-01T19:14:42+00:00"
         },
         {
             "name": "php-ds/php-ds",
@@ -3189,16 +3189,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.5.6",
+            "version": "3.5.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "e97627871a7eab2f70e59166072a6b767d5834e0"
+                "reference": "9d583721a7157ee997f235f327de038e7ea6dac4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/e97627871a7eab2f70e59166072a6b767d5834e0",
-                "reference": "e97627871a7eab2f70e59166072a6b767d5834e0",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/9d583721a7157ee997f235f327de038e7ea6dac4",
+                "reference": "9d583721a7157ee997f235f327de038e7ea6dac4",
                 "shasum": ""
             },
             "require": {
@@ -3236,7 +3236,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-08-10T04:50:15+00:00"
+            "time": "2020-10-23T02:01:07+00:00"
         },
         {
             "name": "symfony/console",
